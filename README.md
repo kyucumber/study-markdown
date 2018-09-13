@@ -16,6 +16,8 @@
 
 [Java8 LocalDateTime custom Deserializer, Serializer 만들기](/spring/java-local-date-custom.md)
 
+[Jpa Auditing을 통해 엔티티 중복 제거, 자동화하기](/spring/jpa-auditing.md)
+
 ### JavaScript
 
 [JavaScript에서 DOM 활용하기](/js/javascript-dom.md)
