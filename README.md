@@ -1,6 +1,6 @@
 # study-markdown
 
-티스토리 업로드용 markdown 정리용 Repository
+티스토리 업로드용 markdown 정리 Repository
 
 ### Spring
 
