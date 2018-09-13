@@ -1,5 +1,7 @@
 # study-markdown
 
+티스토리 업로드용 markdown 정리용 Repository
+
 ### Spring
 
 [Spring @ControllerAdvice 어노테이션](/spring/spring-controller-advice.md)
