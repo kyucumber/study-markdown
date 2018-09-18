@@ -8,7 +8,7 @@
 
 [Spring 커스텀 HandlerMethodArgumentResolver 적용하기](/spring/spring-argument-resolver.md)
 
-[Spring Ehcache 적용하기](/spring/spring-echcache.md)
+[Spring Ehcache 적용하기](/spring/spring-ehcache.md)
 
 [@MockBean, @SpyBean 이용 Caching 사용 시 단위 테스트 작성하기](/spring/spring-cache-junit-test.md)
 
