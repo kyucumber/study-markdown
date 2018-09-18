@@ -1,8 +1,8 @@
-## JavaScript에서 DOM 활용하기
+# JavaScript에서 DOM 활용하기
 
 JavaScript에서의 DOM 객체에 대해 알아보자.
 
-### Node Interface
+## Node Interface
 
 DOM Node Interface의 IDL(interface description language)이 DOM Level 3 Core spec정의되어 있다. [DOM Level 3 Core Spec](https://www.w3.org/TR/DOM-Level-3-Core/core.html#ID-1950641247)
 
@@ -35,7 +35,7 @@ Node는 EventTarget을 \_\_proto\_\_로 가지며, EventTarget를 상속하는 �
 
 EventTarget도 console.dir로 찍어보면, prototype에 addEventListener메소드가 들어있다.
 
-### DOM Navigation
+## DOM Navigation
 
 특정 속성들에 의해 Node들은 연결되어 있다. 간단한 html과 js를 통해 Node들을 출력해보자
 
@@ -79,7 +79,7 @@ console.log(document.body.firstElementChild); //<h1>
 
 아마 Node를 쓰기 보다는, Element를 활용하는 경우가 많을테니 children을 쓰면 된다.
 
-#### Node와 Element 메소드
+## Node와 Element 메소드
 
 아마 아래의 메소드들은 유용하게 쓰일거 같다. parent는 부모 DOM, previousSibling은 이전 형제, child는 자식, first, last는 각각 첫번째 마지막 자식 DOM을 가져온다.
 
@@ -87,7 +87,7 @@ console.log(document.body.firstElementChild); //<h1>
 
 위 Element 밑에 childNodes는 오타, children을 해야 자식 Element들만 가져온다.﻿
 
-### DOM Search
+## DOM Search
 
 javascript 코드 안에서 DOM을 검색하려면 아래처럼 id, class, tag, name 프로퍼티를 이용해 가져올 수 있다. querySelector를 쓰는게 제일 편한 듯 싶다.
 
@@ -106,7 +106,7 @@ document.querySelectorAll('id, classes');
 //element 내부 메소드 존재, 배열 반환
 ```
 
-### DOM Attribute
+## DOM Attribute
 
 DOM attribute 와 property 둘 다 한글 번역으로는 속성으로, 처음엔 같다고 생각했고 지금도 헷갈리지만 두개는 약간 다른 개념이다. 간단하게 말하면 DOM properties는 자바스크립트 객체의 속성, HTML attributes는는 HTML 태그의 속성이다.
 
@@ -157,7 +157,7 @@ console.log("attribute: ", input1.getAttribute('value')); // 변경이 없다.
 
 근데, 아래의 input 태그의 경우에는 property를 바꾸면 input 박스의 값은 바뀌지만, 실제로 HTML DOM이 가지는 attribute의 값은 변경되지 않는다. **input 태그의 value 속성은 property와 attribute값이 id처럼 대응되지 않는다.** 
 
-#### DOM 변경(생성, 삽입, 복사, 삭제)하기
+## DOM 변경(생성, 삽입, 복사, 삭제)하기
 
 - 요소 생성
 
