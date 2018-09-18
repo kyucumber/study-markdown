@@ -1,4 +1,4 @@
-## BcryptPasswordEncoder 랜덤값 단위 테스트 작성하기
+# @Spy를 이용해 BcryptPasswordEncoder 랜덤값 단위 테스트 작성하기
 
 코드를 작성하면서 회원 정보의 비밀번호 컬럼을 BcryptPasswordEncoder로 암호화해 저장하도록 구현했는데 그 부분과 관련된 단위 테스트를 작성했을 때, 매번 랜덤한 값이 인코딩되어서 나와서 단위 테스트 작성을 어떻게 해야할지에 대해 고민..
 

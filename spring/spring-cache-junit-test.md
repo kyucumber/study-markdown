@@ -1,4 +1,4 @@
-## @MockBean, @SpyBean 이용 Caching 사용 시 단위 테스트 작성하기
+# @MockBean, @SpyBean 이용 Caching 사용 시 단위 테스트 작성하기
 
 Service단 코드에 EhCache를 적용했었다. 그때 그와 관련된 테스트를 어떻게 진행해야 할 지 고민했었는데 @MockBean과 @SpyBean 어노테이션을 이용해 Repository 코드가 몇번 호출되는지 체크해 단위 테스트를 진행할 수 있었음.
 

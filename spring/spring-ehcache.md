@@ -1,4 +1,4 @@
-## Spring Ehcache 적용하기
+# Spring Ehcache 적용하기
 
 잘 변경되지 않으면서 반복적으로 호출되는 데이터에 대해 캐싱을 적용해서 서버의 성능을 향상시킬 수 있다.
 
@@ -6,7 +6,7 @@
 
 Spring에서는 **spring-starter-cache**를 통해 로컬 캐싱을 사용할 수 있는데 기본적으로 ConcurrentHashMap을 사용해 제공하고 있다. 기본 캐시매니저를 사용하지 않고 EhCache를 적용하려면 두가지 의존성을 추가해야 한다.
 
-```xml
+```yaml
 compile('org.springframework.boot:spring-boot-starter-cache')
 compile group: 'net.sf.ehcache', name: 'ehcache', version: '2.9.0'
 ```
@@ -21,7 +21,7 @@ spring-starter-cache에서는 기본적으로 `ConcurrentHashMap` 을 사용하�
 
 캐싱 설정 정보는 디폴트로 resources 아래의 `ehcache.xml` 파일을 보는데 아래처럼 직접 지정해 줄 수 있다. 변경하고 싶으면 해당 파일 네임을 지정해주면 된다.
 
-```xml
+```yaml
 # application.yml
 spring:
   cache:

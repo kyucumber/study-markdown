@@ -1,4 +1,4 @@
-## Spring 커스텀 HandlerMethodArgumentResolver 적용하기
+# Spring 커스텀 HandlerMethodArgumentResolver 적용하기
 
 HandlerMethodArgumentResolver 인터페이스를 구현해서 커스텀 ArgumentResolver를 만들어보자.
 

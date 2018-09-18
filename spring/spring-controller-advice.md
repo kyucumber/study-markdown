@@ -1,4 +1,4 @@
-## Spring @ControllerAdvice 어노테이션
+# Spring @ControllerAdvice 어노테이션
 
 스프링에서 예외처리를 전역적으로 핸들링하기 위해 @ControllerAdvicde 어노테이션을 사용할 수 있다.
 

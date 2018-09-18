@@ -1,4 +1,4 @@
-## Java8 LocalDateTime custom Deserializer, Serializer 만들기
+# Java8 LocalDateTime custom Deserializer, Serializer 만들기
 
 
 Spring에서 Java8의 LocalDateTime을 그냥 사용하다보면 왠진 모르겠지만 Serialize, Deserialize 하는 과정에서 많은 문제가 발생한다.
