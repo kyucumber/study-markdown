@@ -49,7 +49,7 @@ public class RestExceptionHandler {
 
 > Filter단에서 발생하는 예외에 대해서는 핸들링되지 않는다. 예를 들면 404처럼 DispatcherServlet에서 발생하는 예외의 경우 여기서 핸들링되지 않는다.
 >
-> [404 error redirect in Spring with java confighttps://stackoverflow.com/questions/ask)](https://stackoverflow.com/questions/23574869/404-error-redirect-in-spring-with-java-config)
+> [404 error redirect in Spring with java confighttps://stackoverflow.com/questions/ask](https://stackoverflow.com/questions/23574869/404-error-redirect-in-spring-with-java-config)
 >
 > ```java
 > public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
