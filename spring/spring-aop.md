@@ -71,7 +71,7 @@ AOP 용어들 스프링에서만 사용되는게 아니라 AOP 프레임워크 �
 >
 > Pointcut 표현식에 맞고, JoinPoint에 해당하는 지점에서 해당 Aspect가 실행된다.
 >
-> ![/images/spring/pointcut.png](Pointcut.png)
+> ![](/images/spring/pointcut.png)
 >
 > 포인트컷 표현식은 위와 같은 구조를 가지고 있다. execution은 포인트컷 지정자로 다른 것도 많지만 생략.
 >
@@ -100,7 +100,7 @@ AOP 용어들 스프링에서만 사용되는게 아니라 AOP 프레임워크 �
 >
 > Aspect가 지정된 객체를 새로운 프록시 객체를 생성하는 과정.
 >
-> ![/images/spring/cglib.png](cglib.png)
+> ![](/images/spring/cglib.png)
 >
 > 위처럼 CategoryService라는 객체 이외에 CGLIB 프록시 객체가 생성되기 위한 과정을 의미한다.
 >
@@ -131,7 +131,7 @@ public class CategoryService {
 
 위의 Service의 save를 호출했을 때, CategoryService로 바로 접근하는것이 아니라.
 
-![/images/spring/cglib.png](cglib.png)
+![](/images/spring/cglib.png)
 
 $$EnhancerBySpringCGLIB 라고 적힌 weaving으로 생성된 CGLIB 프록시를 통해 간접적으로 접근하게 된다. 저 프록시 객체를 통해서 트랜잭션이나 로깅 등 AOP와 관련된 처리가 동작하게 된다.
 
@@ -160,7 +160,7 @@ public class CategoryServiceEnhancerBySpringCGLIB {
 }
 ```
 Spring AOP의 Proxy는 CGLIB Proxy, JDK Dynamic Proxy 두가지 종류가 있다.
-![/images/spring/springaop-process.png](springaop-process.png)
+![](/images/spring/springaop-process.png)
 
 과거에는 기본적으로 **인터페이스가 있고, 그의 구현체가 있는 클래스의 경우 JDK dynamic Proxy를 사용**하고 **인터페이스가 없는 경우 CGLIB Proxy를 사용**했다.
 
@@ -212,7 +212,8 @@ Spring에서 지원하는 AOP와 AspectJ를 사용하는것과 차이점이 조�
 
 AspectJ가 실행속도 측면이나 기능적인 측면에서 더 좋다고 할 수 있지만 AspectJ에 대해서 대충만 훑어봐도 너무 어려워서 Spring AOP를 이용해 개발을 하고 그 이상의 기능이 필요한 경우 AspectJ를 확장해서 사용하는 것이 좋을 것 같다.
 
-![/images/spring/spring-aop-aspectj-diff.png](spring-aop-aspecjt-diff.png)[baeldung spring-aop vs aspectj](https://www.baeldung.com/spring-aop-vs-aspectj)
+![](/images/spring/spring-aop-aspectj-diff.png)
+[baeldung spring-aop vs aspectj](https://www.baeldung.com/spring-aop-vs-aspectj)
 
 ## Spring AOP 를 이용한 실행시간 측정
 
@@ -260,7 +261,7 @@ public class BestCategoryService {
 
 위와 같이 설정하고, 코드를 실행시켜 보면 따로 코드를 설정해 준 게 없는데도 AOP가 작동하면서 수행 시간이 찍히게 된다.
 
-![/images/spring/exetime.png](exetime.png)
+![](/images/spring/exetime.png)
 
  [Spring AOP 이동욱님 블로그](https://jojoldu.tistory.com/71)
 
