@@ -20,6 +20,8 @@
 
 [JPA Persistence](/spring/spring-data-jpa-persistence.md)
 
+[Spring AOP](/spring/spring-aop.md)
+
 ### JavaScript
 
 [JavaScript에서 DOM 활용하기](/js/javascript-dom.md)
