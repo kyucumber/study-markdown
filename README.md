@@ -26,6 +26,10 @@
 
 [JavaScript에서 DOM 활용하기](/js/javascript-dom.md)
 
+### DevOps
+
+[가상 이미지 생성을 위한 Packer](/devops/packer.md)
+
 ### Algorithm
 
 [배열에서 가장 큰 원소의 이어지는 합 구하기](/algorithm/algorithm-01.md)
