@@ -229,7 +229,7 @@ AMI를 생성하기 전에 IAM에서 AMI 생성을 위한 유저를 생성하고
 "example.json" 27L, 886C
 ```
 
-파일에 모든 정보를 입력한 후 아래 명령어 입력
+파일에 모든 정보를 입력한 후 아래 명령어 입력을 통해 AMI 생성
 
 ```json
 $ packer build filename.json
