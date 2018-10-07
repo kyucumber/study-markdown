@@ -388,5 +388,5 @@ MS Name/IP address         Stratum Poll Reach LastRx Last sample
 
 ### 참고
 
-- ![ansible-example](https://github.com/ansible/ansible-examples)
-- ![[Ansible] Playbooks 요약 정리](https://moonstrike.github.io/ansible/2016/09/22/Ansible-Playbooks.html)
+- [ansible-example](https://github.com/ansible/ansible-examples)
+- [[Ansible] Playbooks 요약 정리](https://moonstrike.github.io/ansible/2016/09/22/Ansible-Playbooks.html)
