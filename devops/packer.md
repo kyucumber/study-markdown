@@ -8,10 +8,30 @@ json 파일을 정해진 형식대로 작성하고, 그 json파일을 읽어서 
 
 ## Install
 
-OS X라서 HomeBrew를 이용해 설치
+- OSX
 
 ```bash
 $ brew install packer
+```
+
+- Linux
+
+```bash
+$ wget https://releases.hashicorp.com/packer/1.3.1/packer_1.3.1_linux_amd64.zip
+$ unzip packer_1.3.1_linux_amd64.zip
+$ mv packer /usr/local/bin
+
+vim .bash_profile
+```
+
+edit .bash_profile 
+
+```bash
+export PATH=$PATH:/usr/local/bin
+```
+
+```bash
+$ source .bash_profile
 ```
 
 ## Command
