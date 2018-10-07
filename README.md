@@ -30,6 +30,8 @@
 
 [가상 이미지 생성을 위한 Packer](/devops/packer.md)
 
+[Packer와 Ansible 활용 AMI 생성](/devops/ansible-packer.md)
+
 ### Algorithm
 
 [배열에서 가장 큰 원소의 이어지는 합 구하기](/algorithm/algorithm-01.md)
