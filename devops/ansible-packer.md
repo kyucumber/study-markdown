@@ -13,7 +13,7 @@ packer에서 프로비저닝을 할 때 shell 스크립트 파일을 실행하�
     },
     {
       "type": "ansible",
-      "playbook_file": "playbook/jdk8.yml"
+      "playbook_file": "playbook/main.yml"
     }
   ]
 ```
@@ -69,29 +69,29 @@ Ansible로 프로비저닝 하기 전에 packer build파일을 먼저 작성하�
 
 builders는 생성될 이미지의 옵션들, 빌더 타입들을 지정하는 부분이다. 다양한 옵션들이 있는데 간략하게 살펴보자.
 
-- type
+- **type**
 
 builder 타입으로 amazon-ebs 이외에도 chroot 등 다양한 설정이 있다. 
 
-- source_ami
+- **source_ami**
 
 베이스가 될 ami, 나는 아래와 같은 amazon-linux 기본 ami를 지정했다.
 
 ![image-20181007171013939](/images/devops/image-20181007171013939.png)
 
-- vpc_id
+- **vpc_id**
 
 vpc 지정, 만약 vpc가 구성되어 있으면 원하는 vpc를 지정하면 된다.
 
-- subnet_id
+- **subnet_id**
 
 서브넷 지정, 원하는 서브넷을 선택하면 된다.
 
-- instance_type
+- **instance_type**
 
 말 그대로 인스턴스 타입
 
-- tags
+- **tags**
 
 AMI에 지정될 태그들을 정의할 수 있다.
 
@@ -107,7 +107,9 @@ AMI에 지정될 태그들을 정의할 수 있다.
 
 ![image-20181007171238023](/images/devops/image-20181007171238023.png)
 
-**provisioners는 부팅 후 이미지를 설치 및 구성하는 부분**인데 shell 스크립트를 이용해서도 할 수 있고 우리는 ansible을 이용해서 할 거기 때문에 아래처럼 옵션을 주면 된다.
+**provisioners는 부팅 후 이미지를 설치 및 구성하는 부분**인데 shell 스크립트를 이용해서도 할 수 있고 우리는 ansible을 이용해서 프로비저닝을 진행할거라 아래처럼 옵션을 주면 된다.
+
+
 
 ```json
 "provisioners": [
@@ -257,7 +259,7 @@ Amazon Time Sync Service 사용을 위해서 ntp 제거, chrony 설치, handlers
 
 notify 액션을 받아서 chrony 데몬을 실행하는 작업을 수행한다.
 
-- #### Jdk8 role
+- #### jdk8 role
 
 ```bash
 roles
@@ -377,9 +379,14 @@ $ chronyc sources -v
 ||                                 |    |           \
 MS Name/IP address         Stratum Poll Reach LastRx Last sample
 ===============================================================================
-^* 169.254.169.123               3   6    17    63    -21us[-1387us] +/- 1968us
+^* 000.000.000.000               3   6    17    63    -21us[-1387us] +/- 1968us
 ^- ntp-1.arkena.net              2   6    17    62  +5237us[+5237us] +/-  168ms
 ^- 4.144.155.104.bc.googleu>     2   6    17    63   -575us[-1942us] +/-  109ms
 ^- t1.time.sg3.yahoo.com         2   6    17    62   +106us[ +106us] +/-   58ms
 ^- server.antechnet.sk           3   6    17    62    +40ms[  +40ms] +/-  196ms
 ```
+
+### 참고
+
+- ![ansible-example](https://github.com/ansible/ansible-examples)
+- ![[Ansible] Playbooks 요약 정리](https://moonstrike.github.io/ansible/2016/09/22/Ansible-Playbooks.html)
