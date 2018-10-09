@@ -6,13 +6,13 @@ Terraform은 여러 인프라들에 대한 관리를 제공한다. GUI 환경의
 
 ## Installation
 
-- for Mac(brew)
+- **Mac(brew)**
 
 ```bash
 $ brew install terraform
 ```
 
-- binary file
+- **binary file**
 
 ```bash
 $ wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip
@@ -61,7 +61,7 @@ provider "aws" {
 
 ### Environment variables
 
-환경 변수에 설정하는 방법. 난 direnv를 이용해서 환경 변수에 키 값을 지정해서 사용했다.
+환경 변수에 설정하는 방법. 나는 direnv를 이용해서 환경 변수에 키 값을 지정해서 사용했다.
 
 ```
 provider "aws" {}
