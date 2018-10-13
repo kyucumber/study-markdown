@@ -32,7 +32,9 @@
 
 [Packer와 Ansible 활용 AMI 생성](/devops/ansible-packer.md)
 
-[Terraform](/devops/ansible-packer.md)
+[Terraform](/devops/terraform.md)
+
+[Terraform으로 Launch Templates 생성](/devops/terraform-launch-template.md)
 
 ### Algorithm
 
