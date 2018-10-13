@@ -276,13 +276,17 @@ resource "aws_launch_template" "example" {
 }
 ```
 
-## Create Launch Template
+## Create launch template
 
 Launch template을 생성할 스크립트 코드 작성
 
 **launch.tf**에 아래 내용 작성
 
+provider설정을 아래처럼 하려면 환경변수에 값을 넣어두어야 한다.
+
 ```json
+provider "aws" {}
+
 resource "aws_launch_template" "kyunam" {
   name = "launch-template-kyunam-${uuid()}"
 
@@ -296,7 +300,7 @@ resource "aws_launch_template" "kyunam" {
   ebs_optimized = true
 
   iam_instance_profile {
-    name = "arn:aws:iam::314737209462:instance-profile/example"
+    name = "arn:aws:iam::1111:instance-profile/example"
   }
 
   image_id = "ami-0bb01e989e36b8ab5"
@@ -305,7 +309,7 @@ resource "aws_launch_template" "kyunam" {
 
   instance_type = "t2.micro"
 
-  key_name = "sre-launch-template-test"
+  key_name = "launch-template-test"
 
   placement {
     availability_zone = "ap-northeast-2"
