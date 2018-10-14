@@ -51,7 +51,7 @@ IAM에서 아래처럼 유저를 생성하고 키를 발급하자. EC2 생성만
 
 직접 키값을 넣어서 하는 방법.
 
-```json
+```bash
 provider "aws" {
   region     = "us-west-2"
   access_key = "anaccesskey"
@@ -63,7 +63,7 @@ provider "aws" {
 
 환경 변수에 설정하는 방법. 나는 direnv를 이용해서 환경 변수에 키 값을 지정해서 사용했다.
 
-```
+```bash
 provider "aws" {}
 ```
 
@@ -77,7 +77,7 @@ $ export AWS_DEFAULT_REGION="us-west-2"
 
 example.tf 파일을 생성하고 아래 내용을 작성한다. 아래 파일에서는 환경 변수에 설정된 값을 통해 AWS provder를 설정한다.
 
-```json
+```bash
 provider "aws" {}
 
 resource "aws_instance" "example" {
