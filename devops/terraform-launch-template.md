@@ -1,11 +1,11 @@
-# Terraform으로 Launch Templates 생성하기
+# Terraform으로 Launch Templates 생성
 
 Terraform으로 Auto Scaling Group에서 사용할 Launch Template를 생성해보자.
 
 ## Example Usage
 아래는 launch_teamplte 생성에 대한 기본 예시인데 여기서 필요한 정보들만 바꾸고 실행시키면 원하는 launch template를 만들 수 있다.
 
-```json
+```bash
 resource "aws_launch_template" "foo" {
   name = "foo"
 
