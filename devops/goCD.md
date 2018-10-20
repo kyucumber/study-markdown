@@ -3,12 +3,11 @@
 
 Jenkins와 유사한 CI/CD 툴.
 
-![image-20181016194305511](/images/devops/image-20181020231757846.png)
+![image-20181016194305511](/images/devops/gocd/image-20181020231757846.png)
 
-대략적인 구조는 위의 그림처럼 서버와 에이전트로 이루어져있다.
-서버에서 인터페이스를 제공하고 변경 사항이 감지되어 파이프라인이 트리거되는 경우 해당 작업 실행을 에이전트에 할당한다.
-에이전트에서 구성된 작업을 수행하기 때문에 최소 하나의 이상의 에이전트가 구성되어야 한다.
-간단하게는 GoCD서버와 같은 서버에 GoCD Agent가 설치되어 있으면 된다.
+대략적인 구조는 위의 그림처럼 GoCD서버와 GoCD 에이전트로 이루어져있다. 서버에서 파이프라인을 추가할 수 있는 인터페이스를 제공하고 등록된 파이프라인이 트리거되는 경우 해당 작업 실행을 에이전트에 할당한다. 에이전트에서 구성된 작업을 수행하기 때문에 최소 하나의 이상의 에이전트가 구성되어야 한다. 
+
+간단하게 구성할때는 GoCD서버와 같은 서버에 GoCD 에이전트를 설치하면 된다.
 
 
 ## Installation
@@ -58,13 +57,13 @@ $ sudo /etc/init.d/go-agent start
 
 해당 서버의 8153번 포트로 들어가면 젠킨스 같은 관리 페이지가 나오고 여기서 파이프라인을 만들 수 있다.
 
-![image-20181017233250714](/images/devops/image-20181017233250714.png)
+![image-20181017233250714](/images/devops/gocd/image-20181017233250714.png)
 
 ### Pipeline
 
-![image-20181017233451935](/images/devops/image-20181017233451935.png)
-
 Pipeline은 여러개의 Stage로 구성된다. Stage1이 실패하면 2로 넘어가지 않는다. 간단하게 파이프라인 하위에 여러 스테이지가 존재하고 스테이지 밑에는 각각의 독립적인 JOB이 존재하고 JOB 하위에는 여러 Task가 존재하는 구조이다.
+
+![image-20181017233451935](/images/devops/gocd/image-20181017233451935.png)
 
 ### Stage
 
@@ -80,11 +79,11 @@ Pipeline의 최하위 작업 개념. shell script를 실행하거나 하는 작�
 
 
 
-## Material
+### Material
 
 Pipeline이 트리거되기 위한 조건, Git, Subversion… 등등 Pipeline이 끝난 뒤 Pipeline이 트리거되도록 설정할 수도 있다.
 
-![image-20181017234159541](/images/devops/image-20181017234159541.png)
+![image-20181017234159541](/images/devops/gocd/image-20181017234159541.png)
 
 
 
@@ -111,9 +110,9 @@ StrictHostKeyChecking no
 UserKnownHostsFile /dev/null
 ```
 
-## Authentication
+### Authentication
 
-gocd 서버를 처음 구동하면 인증 없이 모두가 접근 할 수 있는데 인증을 추가할 수 있다.
+GoCD 서버를 처음 구동하면 인증 없이 모두가 접근 할 수 있는데 인증을 추가할 수 있다.
 
 - **Password File 기반 인증 추가**
 
@@ -131,9 +130,12 @@ htpasswd 명령어를 통해서 아래 형태의 password 저장 파일 생성.
 user:{SHA}qUqP5cyxm6YcTAhz05H=
 ```
 
-![image-20181019232317650](/images/devops/image-20181019232317650.png)
+생성한 파일을 기반으로 유저를 추가할 수 있다.
 
-선택 후 Add 버튼 클릭
+![image-20181019232317650](/images/devops/gocd/image-20181019232317650.png)
 
-![image-20181019232651377](/images/devops/image-20181019232651377.png)
+위 버튼 선택 후 오른쪽 위의 Add 버튼 클릭
 
+![image-20181019232651377](/images/devops/gocd/image-20181019232651377.png)
+
+생성한 경로의 파일을 지정하고 id를 입력하고 저장하면 로그인 정보가 추가된다.
