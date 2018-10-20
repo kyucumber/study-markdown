@@ -36,6 +36,8 @@
 
 [Terraform으로 Launch Templates 생성](/devops/terraform-launch-template.md)
 
+[GoCD 설치 및 사용](/devops/goCD.md)
+
 ### Algorithm
 
 [배열에서 가장 큰 원소의 이어지는 합 구하기](/algorithm/algorithm-01.md)
