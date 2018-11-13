@@ -364,7 +364,7 @@ public class EventControllerTest extends ControllerTest {
 > ```
 > 아래와 같은 형태로 Location 헤더 정보가 추가된다.
 >
-> ```json
+> ```bash
 > Headers = {Location=[http://localhost:8080/api/events/1], Content-Type=[application/hal+json;charset=UTF-8]}
 > ```
 ## Event 생성 API에 Validation 체크 추가하기
@@ -599,7 +599,7 @@ dependencies {
 
 - **index.adoc**
 
-```json
+```bash
 ifndef::snippets[]
 :snippets: ../../../build/generated-snippets
 endif::[]
@@ -773,7 +773,7 @@ public class Test {
 
 위처럼 기본 설정을 넣고 만들어진 adoc 파일을 살펴보면 아래처럼 줄바꿈이 예쁘게 들어가있지 않다.
 
-```json
+```bash
 [source,bash]
 ----
 $ curl 'http://localhost:8080/api/events' -i -X POST \
@@ -817,7 +817,7 @@ public class ControllerTest {
 
 위 설정을 적용하고 나면 아래처럼 정렬되어 asciidoc이 생성된다.
 
-```json
+```bash
 [source,bash]
 ----
 $ curl 'http://localhost:8080/api/events' -i -X POST \
