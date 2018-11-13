@@ -121,17 +121,21 @@ JSON API 나 HAL 등 다양한 방법을 통해 body에 링크 정보를 넣어�
 
 ## Event 엔티티를 통해 REST API 구현하기
 
+Event 엔티티에 대해 HATEOAS와 Self-Descriptive를 만족하는 REST-API를 구현해보자.
+
+## 프로젝트 생성
+
 위의 Self-Descriptive와 HATEOAS에 맞는 REST API를 직접 구현해보자.
 
 Spring Initializer를 이용해 아래와 같은 의존성을 추가하고 프로젝트를 생성하자.
 
 ![image-20181110224830905](/images/spring/image-20181110224830905.png)
 
-### Event 도메인 정의하기
+## Event 도메인 정의하기
 
 [Event 도메인 정의 커밋](https://github.com/tramyu/ksug-rest-api/commit/92591448d432ddd665a7a4ea5b217fbee278495c)
 
-Event
+**Event**
 
 ```java
 @Entity
@@ -163,7 +167,7 @@ public class Event {
 
 ```
 
-EventStatus
+**EventStatus**
 
 ```java
 public enum EventStatus {
@@ -201,31 +205,34 @@ public class EventTest {
 }
 ```
 
-> - JPA 무한 참조 문제와 EqualsAndHashCode
->
-> ```java
-> @EqualsAndHashCode(of = "id")
-> ```
->
-> 모든 필드를 다 사용하는데 id로만 비교하게 함. 순환 참조를 통한 stackOverFlow 방지용으로 id로만 비교하게 한다. id는 유니크라서 아이디로만 비교해도 무방할 것 같다.
->
-> - Builder 패턴 사용과 유연한 객체 설계
->
-> Builder 패턴을 통해 가독성을 증가시키고 객체 설계를 유연하게 한다. 하지만 default 생성자를 사용할 수 없게 되어 자바 기본 스펙으로 객체 생성이 어려워진다. AllArgs, NoArgs를 추가해주자.
->
-> ```java
-> @Builder
-> @AllArgsContsructor
-> @NoArgsConstructor
-> public class Event {
-> 	// 생략
-> }
-> ```
->  추가로 롬복 사용에 따른 코드 커버리지 감소 문제가 있는데 이 또한 Lombok과 유사한 방식으로 컴파일 타임에 롬복 Getter, Setter 관련된 테스트 코드를 작성해주는 어노테이션을 직접 개발하거나 하는 방식으로 코드 커버리지를 확보 가능하다. 근데 번거로울 것 같음.. 그리고 추가적으로 @Data 어노테이션을 사용하는건 지양하자.
->
-> - Meta Annotation
->
-> Custom Annotation에 메타 Annotation을 붙여서 설정을 포함시킬 수 있다고 함.
+### 위에서 사용한 내용 관련 문제
+
+- **JPA 무한 참조 문제와 EqualsAndHashCode**
+
+```java
+@EqualsAndHashCode(of = "id")
+```
+
+모든 필드를 다 사용하는데 id로만 비교하게 함. 순환 참조를 통한 stackOverFlow 방지용으로 id로만 비교하게 한다. id는 유니크라서 아이디로만 비교해도 무방할 것 같다.
+
+- **Builder 패턴 사용과 유연한 객체 설계**
+
+Builder 패턴을 통해 가독성을 증가시키고 객체 설계를 유연하게 한다. 하지만 default 생성자를 사용할 수 없게 되어 자바 기본 스펙으로 객체 생성이 어려워진다. AllArgs, NoArgs를 추가해주자.
+
+```java
+@Builder
+@AllArgsContsructor
+@NoArgsConstructor
+public class Event {
+	// 생략
+}
+```
+추가로 롬복 사용에 따른 코드 커버리지 감소 문제가 있는데 이 또한 Lombok과 유사한 방식으로 컴파일 타임에 롬복 Getter, Setter 관련된 테스트 코드를 작성해주는 어노테이션을 직접 개발하거나 하는 방식으로 코드 커버리지를 확보 가능하다. 근데 번거로울 것 같음.. 그리고 추가적으로 @Data 어노테이션을 사용하는건 지양하자.
+
+- **Meta Annotation**
+
+Custom Annotation에 메타 Annotation을 붙여서 설정을 포함시킬 수 있다고 함.
+
 
 ## Event 생성 API 정의, 테스트 코드 작성하기
 
@@ -340,33 +347,38 @@ public class EventControllerTest extends ControllerTest {
 }
 ```
 
-> #### Slice Test
->
-> 계층별 테스트를 위한 어노테이션이 존재한다. 
->
-> ex) @WebMvcTest(controller만 테스트), @DataJpaTest(Jpa 관련 빈만 테스트)
->
+### Slice Test
+
+계층별 테스트를 위한 어노테이션이 존재한다. 
+
+- **SliceTest 종류**
+
+```java
+@WebMvcTest(controller만 테스트), @DataJpaTest(Jpa 관련 빈만 테스트) .. 등등
+```
+
 > @DataJpaTest에서는 H2를 사용한다고 함.
->
+> 
 > @WebMvcTest는 @SpringBootTest, @AutoConfigurationMockMvc 두 조합으로 대체 가능.
->
-> WebMvcTest는 경량화된 테스트라 좋지만 Mocking이 너무 많이 일어나는 경우에는 @SpringBootTest를 실행하는 것이 낫다. Mocking으로 인한 버그나 장애도 발생하기 때문에 빈 생성에 오랜 시간이 걸려도 @SpringBootTest를 실행하는 것이 조금 더 정확한 테스트가 될 수 있음. 
->
-> - create에서 Location 헤더 정보 설정하기
->
-> POST 요청을 통해 데이터가 생성되는 경우 항상 Location 헤더 정보가 포함되어야 하며 Spring HATEOAS에서는 linkTo 메소드를 통해 해당 URI 정보를 생성해줄 수 있다.
->
-> linkTo로 생성된 uri 정보를 created에 넣어주면 HTTP Header에 Location=http://localhost/api/events/1 값이 들어가게 된다.
->
-> ```java
-> URI uri = ControllerLinkBuilder.linkTo(EventController.class).slash(savedEvent.getId()).toUri();
->         return ResponseEntity.created(uri).body(savedEvent);
-> ```
-> 아래와 같은 형태로 Location 헤더 정보가 추가된다.
->
-> ```bash
-> Headers = {Location=[http://localhost:8080/api/events/1], Content-Type=[application/hal+json;charset=UTF-8]}
-> ```
+
+WebMvcTest는 경량화된 테스트라 좋지만 Mocking이 너무 많이 일어나는 경우에는 @SpringBootTest를 실행하는 것이 낫다. Mocking으로 인한 버그나 장애도 발생하기 때문에 빈 생성에 오랜 시간이 걸려도 @SpringBootTest를 실행하는 것이 조금 더 정확한 테스트가 될 수 있음. 
+
+- **create에서 Location 헤더 정보 설정하기**
+
+POST 요청을 통해 데이터가 생성되는 경우 항상 Location 헤더 정보가 포함되어야 하며 Spring HATEOAS에서는 linkTo 메소드를 통해 해당 URI 정보를 생성해줄 수 있다.
+
+linkTo로 생성된 uri 정보를 created에 넣어주면 HTTP Header에 Location=http://localhost/api/events/1 값이 들어가게 된다.
+
+```java
+URI uri = ControllerLinkBuilder.linkTo(EventController.class).slash(savedEvent.getId()).toUri();
+return ResponseEntity.created(uri).body(savedEvent);
+```
+아래와 같은 형태로 Location 헤더 정보가 추가된다.
+
+```bash
+Headers = {Location=[http://localhost:8080/api/events/1], Content-Type=[application/hal+json;charset=UTF-8]}
+```
+
 ## Event 생성 API에 Validation 체크 추가하기
 
 [Event 생성 API에 Validation 체크 추가하기 커밋](https://github.com/tramyu/ksug-rest-api/commit/6457bf25839e5ac8c7320fe8fd6ae61fe2ff8781)
@@ -377,7 +389,7 @@ Validation 체크를 통해 api 요청 시 잘못된 정보가 들어왔을 때 
 
 min max notnull 같은 간단한건 @Valid를 통해 해결하고 그 이상의 복잡한 Validation 체크는 @Component로 생성한 Validator를 통해 해결한다.
 
-- EventController
+- **EventController**
 
 ```java
 @PostMapping
@@ -531,20 +543,13 @@ public void createFailTestByCustomEventDtoValidator() throws Exception {
 
 ## Spring HATEOAS 적용하기
 
-먼저 Spring Rest Docs를 먼저 적용하자. 
+HATEOAS를 만족하도록 링크를 내려주기 이전에 Spring Rest Docs를 먼저 적용하자. 
 
-gradle 기준으로 작성했다.
+gradle 기준으로 작성함.
 
-```java
-public class EventResource extends Reousrce<Event> {
-    public EventResource() {
-        super(contents, links);
-        add(linkTo(EventController.class)).slash(~~)
-    }
-}
-```
+## Spring Rest Docs 설정 추가하기
 
-### Spring Rest Docs 설정 추가하기
+[Spring Rest Docs 설정 추가 커밋](https://github.com/tramyu/ksug-rest-api/commit/1f54fa4d5bbc22a0fb313b85f7e7a682dc52d4f6)
 
 Rest Docs를 통해 생성되는 문서를 통해서 Self-Descriptive를 제공하자.
 
@@ -767,7 +772,7 @@ public class Test {
 }
 ```
 
-./gradlew clean build를 하면 아래와 같은 형태로 asciidoc이 생성된다.
+**./gradlew clean build**를 하면 아래와 같은 형태로 asciidoc이 생성된다.
 
 ![image-20181111234708775](/images/spring/image-20181111234708775.png)
 
