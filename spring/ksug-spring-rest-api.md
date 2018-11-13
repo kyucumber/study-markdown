@@ -242,7 +242,7 @@ Custom Annotation에 메타 Annotation을 붙여서 설정을 포함시킬 수 �
 
 Dto -> Event Domain 객체와의 전환을 위한 modelmapper 추가
 
-```groovy
+```
 dependencies {
 	compile group: 'org.modelmapper', name: 'modelmapper', version: '2.3.1'
 }
@@ -1006,7 +1006,7 @@ $ docker-compose -f mysql-docker.yml up -d
 
 - **application.properties**
 
-```properties
+```
 spring.jpa.hibernate.ddl-auto=create-drop
 spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
 spring.jpa.properties.hibernate.format_sql=true
@@ -1076,7 +1076,7 @@ Controller 테스트를 돌려보면 아래처럼 MySQL이 뜨는데 굳이 테�
 
 test 경로 밑에 application-test.properties 를 생성하고 아래처럼 작성 하면 test properties의 우선순위가 더 높아져 H2를 사용하게 된다.
 
-```properties
+```개
 spring.datasource.username=sa
 spring.datasource.password=
 spring.datasource.url=jdbc:h2:mem:testdb
