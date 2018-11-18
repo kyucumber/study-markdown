@@ -27,7 +27,9 @@ $ sudo yum install -y go-server # go-server 설치
 $ sudo /etc/init.d/go-server start # goCD server start
 ```
 
-> Amazon Linux에서 설치 후 go-server start 할 때 hostname을 제대로 인식하지 못하는 에러가 있어서 /etc/hosts에 현재 hostname을 직접 넣어줘서 구동시켰다. 아래와 같은 에러가 나오면 hosts에 현재 호스트네임을 넣어주자.
+> Amazon Linux에서 설치 후 go-server start 할 때 hostname을 제대로 인
+>
+> 식하지 못하는 에러가 있어서 /etc/hosts에 현재 hostname을 직접 넣어줘서 구동시켰다. 아래와 같은 에러가 나오면 hosts에 현재 호스트네임을 넣어주자.
 
 관련 로그는 /var/log/go-server/ 에서 확인할 수 있음
 

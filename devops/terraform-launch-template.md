@@ -81,7 +81,7 @@ Launch Template를 만들기 전에 terraform에서 정의해둔 Launch Template
 
 name은 만들어질 Launch Template의 이름이다. 이름을 주지 않으면 terraform이 유니크한 이름을 만들어준다.
 
-```json
+```bash
 resource "aws_launch_template" "foo" {
   name = "foo"
 }
@@ -91,7 +91,7 @@ resource "aws_launch_template" "foo" {
 
 해당 이름을 prefix로 가지는 유니크한 이름을 생한다. 위의 name과 충돌한다고 하니 하나만 지정해야 할 듯
 
-```json
+```bash
 resource "aws_launch_template" "foo" {
   name_prefix = "foo"
 }
@@ -101,7 +101,7 @@ resource "aws_launch_template" "foo" {
 
 Launch template에 대한 설명
 
-```json
+```bash
 resource "aws_launch_template" "foo" {
   description = "default launch teamplte"
 }
@@ -111,7 +111,7 @@ resource "aws_launch_template" "foo" {
 
 AMI에서 지정한 볼륨 이외에 인스턴스에 연결할 볼륨을 지정하는 부분. Launch Teamplte를 통해 새로 실행될 인스턴스에 대한 볼륨을 변경해주는 부분이다. AMI 기본 볼륨 설정 위에 덮어쓰는 느낌으로 생각하면 될 것 같다.
 
-```json
+```bash
 resource "aws_launch_template" "foo" {
   block_device_mappings {
     device_name = "/dev/sda1"
@@ -126,7 +126,7 @@ resource "aws_launch_template" "foo" {
 
 T2 계열에서만 존재하는 CPU Credit에 대한 설정인것 같다. unlimited와 standard가 존재하는 듯
 
-```json
+```bash
 resource "aws_launch_template" "foo" {
   credit_specification {
     cpu_credits = "standard"
@@ -156,7 +156,7 @@ Elastic GPU를 인스턴스에 추가하는지 여부
 
 인스턴스를 시작하는 IAM 프로필
 
-```json
+```bash
 resource "aws_launch_template" "foo" {
   iam_instance_profile {
     name = "test"
@@ -178,7 +178,7 @@ resource "aws_launch_template" "foo" {
 
 인스턴스 종료 동작, 디폴트 값은 stop
 
-```json
+```bash
 resource "aws_launch_template" "foo" {
   instance_initiated_shutdown_behavior = "terminate"
 }
@@ -212,7 +212,7 @@ resource "aws_launch_template" "foo" {
 
 인스턴스의 placement 정보
 
-```json
+```bash
 resource "aws_launch_template" "foo" {
   placement {
     availability_zone = ""
@@ -236,7 +236,7 @@ ram disk id
 
 인스턴스 시작 시 리소스에 적용할 태그들
 
-```json
+```bash
 resource "aws_launch_template" "example" {
   tag_specifications {
     resource_type = "instance"
@@ -257,7 +257,7 @@ resource "aws_launch_template" "example" {
 
 Launch Template에 적용할 태그
 
-```json
+```bash
 resource "aws_launch_template" "example" {
   tags {
     Name = "test",
@@ -270,7 +270,7 @@ resource "aws_launch_template" "example" {
 
 인스턴스 시작 시 제공할 Base64로 인코딩 된 사용자 데이터 정보
 
-```json
+```bash
 resource "aws_launch_template" "example" {
   user_data = "${base64encode(...)}"
 }
@@ -284,7 +284,7 @@ Launch template을 생성할 스크립트 코드 작성
 
 provider설정을 아래처럼 하려면 환경변수에 값을 넣어두어야 한다.
 
-```json
+```bash
 provider "aws" {}
 
 resource "aws_launch_template" "kyunam" {
