@@ -2,7 +2,7 @@
 
 리눅스 컨테이너 기술을 이용해 어플리케이션 패키징, 배포를 지원하는 경량의 가상화 오픈소스 프로젝트
 
-- Container 기반 가상화 / Hypervisor 기반 가상화
+- **Container 기반 가상화 / Hypervisor 기반 가상화**
 
 ![image-20181027141453532](/images/devops/docker/image-20181027141453532.png)
 
@@ -52,11 +52,11 @@ Docker Registry는 Docker 이미지를 저장한다. Docker Hub 및 Docker Cloud
 
 나중에 읽어보자. [Docker NameSpaces and Cgroups](https://medium.com/@kasunmaduraeng/docker-namespace-and-cgroups-dece27c209c7)
 
-- NameSpaces
+- **NameSpaces**
 
 리눅스 커널의 기능 중 하나, 컨테이너간의 격리를 위해 다양한 종류의 네임스페이스들을 사용한다.
 
-- Cgroups
+- **Cgroups**
 
 특정 컨테이너가 지정한 만큼만 리소스를 쓰도록 제어하는 기술.
 
