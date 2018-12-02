@@ -231,7 +231,7 @@ $ docker run -p 80:80 --link customjenkins:jenkins -d nginx
 
 ping Jenkins 할 때 해당 서버로 ping을 줄 수 있는 것 처럼 nginx 컨테이너 안에서 jenkins라는 alias를 설정하는 것, nginx.config에 아래처럼 proxy_pass로 http://jenkins:8080을 주면 설정된 alias를 통해 접근이 가능하다.
 
-```yaml
+```bash
 http {
 	server {
 		listen 80;
